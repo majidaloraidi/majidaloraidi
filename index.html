@@ -34,7 +34,7 @@
       radial-gradient(ellipse 900px 600px at 15% 0%, rgba(203,160,82,0.10), transparent 60%),
       radial-gradient(ellipse 700px 500px at 100% 20%, rgba(203,160,82,0.06), transparent 55%),
       var(--bg);
-    line-height:1.65;
+    line-height:1.5;
     font-size:16px;
   }
   a{color:inherit;text-decoration:none;}
@@ -55,15 +55,10 @@
   .brand{display:flex;align-items:center;gap:12px;min-width:0;}
   .brand-badge{
     width:38px;height:38px;
-    border-radius:50%;
-    border:1px solid var(--gold-soft);
     display:flex;align-items:center;justify-content:center;
-    font-family:'Cormorant Garamond',serif;
-    font-size:15px;
-    color:var(--gold);
-    letter-spacing:0.02em;
     flex-shrink:0;
   }
+  .brand-badge svg{width:100%;height:100%;}
   .nav-mark{
     font-family:'Cormorant Garamond',serif;
     font-weight:500;font-size:17px;letter-spacing:0.01em;color:var(--ink);
@@ -75,6 +70,20 @@
     transition:color .2s ease;
   }
   .nav-links a:hover{color:var(--gold);}
+  .dossier-link{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    background:var(--gold);
+    padding:11px 20px;
+    font-size:14px;
+    color:var(--bg) !important;
+    border-radius:999px;
+    font-weight:500;
+    transition:background .2s ease;
+  }
+  .dossier-link svg{color:var(--bg);flex-shrink:0;}
+  .dossier-link:hover{background:var(--gold-light);color:var(--bg) !important;}
   .nav-cta{
     background:var(--gold);
     padding:11px 22px;
@@ -90,7 +99,7 @@
 
   /* ---------- Hero ---------- */
   header.hero{
-    padding:120px 0 88px;
+    padding:88px 0 64px;
     border-bottom:1px solid var(--line);
   }
   .eyebrow{
@@ -138,7 +147,7 @@
     color:var(--ink-soft);
     letter-spacing:0.12em;
     text-transform:uppercase;
-    line-height:1.8;
+    line-height:1.4;
   }
   .hero .tagline{
     margin-top:24px;
@@ -146,7 +155,7 @@
     font-size:16.5px;
     color:var(--ink-soft);
     font-weight:300;
-    line-height:1.8;
+    line-height:1.45;
     text-align:justify;
     text-justify:inter-word;
     hyphens:auto;
@@ -176,7 +185,7 @@
   }
   .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
   .hero-contact{
-    margin-top:56px;
+    margin-top:36px;
     display:flex;
     align-items:center;
     gap:36px;
@@ -241,7 +250,7 @@
 
   /* Stat row */
   .stat-row{
-    margin-top:64px;
+    margin-top:40px;
     display:grid;
     grid-template-columns:repeat(4,auto);
     gap:48px;
@@ -260,14 +269,14 @@
   }
 
   /* ---------- Sections ---------- */
-  section{padding:88px 0;scroll-margin-top:88px;}
+  section{padding:64px 0;scroll-margin-top:88px;}
   section + section{border-top:1px solid var(--line);}
   .section-head{
     display:flex;
     justify-content:space-between;
     align-items:flex-end;
     gap:24px;
-    margin-bottom:48px;
+    margin-bottom:36px;
     flex-wrap:wrap;
   }
   .section-num{
@@ -294,6 +303,14 @@
     color:var(--ink);
     max-width:620px;
   }
+  .section-sub{
+    margin-top:14px;
+    font-size:16px;
+    color:var(--ink-soft);
+    font-weight:300;
+    max-width:620px;
+    line-height:1.5;
+  }
   .fade{
     opacity:0;
     transform:translateY(16px);
@@ -307,10 +324,13 @@
     font-weight:300;
     max-width:700px;
     color:var(--ink);
-    line-height:1.8;
+    line-height:1.4;
     text-align:justify;
     text-justify:inter-word;
     hyphens:auto;
+  }
+  #about p.lead + p.lead{
+    margin-top:0;
   }
 
   /* Experience */
@@ -342,21 +362,28 @@
     margin-top:4px;
     letter-spacing:0.01em;
   }
+  .role-tag{
+    font-size:12.5px;
+    color:var(--gold);
+    font-weight:500;
+    margin-top:6px;
+    letter-spacing:0.03em;
+  }
   .role-desc{
-    margin-top:14px;
+    margin-top:6px;
     font-size:15px;
     color:var(--ink-soft);
     max-width:600px;
-    line-height:1.7;
+    line-height:1.5;
   }
   .role-achievements{
-    margin-top:16px;
+    margin-top:8px;
     list-style:none;
     font-size:14.5px;
     color:var(--ink-soft);
   }
   .role-achievements li{
-    margin-bottom:9px;
+    margin-bottom:6px;
     padding-left:20px;
     position:relative;
   }
@@ -368,28 +395,28 @@
   }
   .role-item.secondary{padding:26px 0;}
   .role-item.secondary .role-title{font-size:19px;}
-  .role-item.secondary .role-desc{font-size:14.5px;margin-top:8px;}
+  .role-item.secondary .role-desc{font-size:14.5px;margin-top:4px;}
 
   /* Signature achievements */
   .ach-list{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:0 48px;
-    max-width:860px;
+    grid-template-columns:1fr;
+    max-width:780px;
   }
   .ach-item{
     display:flex;
-    gap:14px;
+    gap:16px;
     font-size:15.5px;
     color:var(--ink);
-    padding:20px 0;
+    padding:10px 0;
+    line-height:1.4;
     border-bottom:1px solid var(--line);
   }
   .ach-item .mark{
     color:var(--gold);
     font-size:11px;
     flex-shrink:0;
-    padding-top:6px;
+    padding-top:4px;
   }
 
   /* Competencies */
@@ -414,6 +441,57 @@
     font-size:9px;
   }
 
+  /* Strategic Government Relations */
+  .inst-head{
+    margin-top:36px;
+    margin-bottom:20px;
+  }
+  .inst-head .section-num{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:500;
+  }
+  .inst-head .section-num::before{
+    content:"";
+    width:28px;height:1px;
+    background:var(--gold-soft);
+    display:inline-block;
+  }
+  .inst-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    max-width:860px;
+  }
+  .inst-card{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:28px;
+    background:linear-gradient(160deg, var(--panel-2), var(--panel) 80%);
+  }
+  .inst-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    font-weight:500;
+    color:var(--ink);
+    margin-bottom:12px;
+  }
+  .inst-card h3 span{
+    color:var(--gold);
+    font-style:italic;
+    font-size:16px;
+  }
+  .inst-card p{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+
   /* Education */
   .edu-grid{
     display:grid;
@@ -434,7 +512,7 @@
 
   /* Footer / contact */
   footer{
-    padding:80px 0 40px;
+    padding:64px 0 40px;
     scroll-margin-top:80px;
   }
   .quote{
@@ -442,7 +520,7 @@
     font-size:clamp(22px,3vw,30px);
     font-weight:500;
     font-style:italic;
-    line-height:1.5;
+    line-height:1.4;
     max-width:680px;
     color:var(--ink);
     border-left:2px solid var(--gold);
@@ -455,12 +533,10 @@
     align-items:center;
     flex-wrap:wrap;
     gap:24px;
-    padding-top:32px;
+    padding-top:28px;
     border-top:1px solid var(--line);
   }
   .footer-bottom .contact-line{font-size:15px;color:var(--ink-soft);}
-  .footer-bottom .contact-line a{color:var(--ink);font-weight:500;}
-  .footer-bottom .contact-line a:hover{color:var(--gold);}
   .footer-motto{
     font-size:12px;
     letter-spacing:0.15em;
@@ -468,26 +544,80 @@
     color:var(--ink-soft);
   }
   .footer-motto span{color:var(--gold);}
-  .copyright{font-size:13px;color:#5C6270;margin-top:20px;}
+  .copyright{font-size:13px;color:#5C6270;margin-top:10px;}
 
-  /* Contact form */
-  .contact-grid{
+  .footer-cta{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+    padding:28px 32px;
+    margin-bottom:40px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:linear-gradient(160deg, var(--panel-2), var(--panel) 80%);
+  }
+  .footer-cta-label{
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .footer-cta-text{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+
+  /* Contact forms */
+  .forms-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:64px;
-    align-items:start;
-    margin-bottom:56px;
+    gap:24px;
+    margin-bottom:48px;
+    align-items:stretch;
   }
-  .contact-intro p{
-    font-size:15.5px;
+  .form-card{
+    display:flex;
+    flex-direction:column;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:32px;
+    background:linear-gradient(160deg, var(--panel-2), var(--panel) 80%);
+  }
+  .form-card form{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+  }
+  .form-card .field-grow{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .form-card .field-grow textarea{
+    flex:1;
+    min-height:60px;
+  }
+  .form-card .form-submit{
+    margin-top:auto;
+    align-self:flex-start;
+  }
+  .form-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .form-card-sub{
+    font-size:13.5px;
     color:var(--ink-soft);
-    max-width:420px;
-    line-height:1.75;
-    text-align:justify;
-    text-justify:inter-word;
-    hyphens:auto;
+    margin-top:6px;
+    margin-bottom:24px;
+    line-height:1.4;
   }
-  .field{margin-bottom:26px;}
+  .field{margin-bottom:22px;}
   .field label{
     display:block;
     font-size:12px;
@@ -496,8 +626,16 @@
     color:var(--ink-soft);
     margin-bottom:10px;
   }
+  .field-note{
+    text-transform:none;
+    letter-spacing:0;
+    font-size:11px;
+    color:var(--ink-soft);
+    opacity:0.7;
+  }
   .field input,
-  .field textarea{
+  .field textarea,
+  .field select{
     width:100%;
     background:transparent;
     border:none;
@@ -511,8 +649,38 @@
     transition:border-color .2s ease;
   }
   .field input:focus,
-  .field textarea:focus{border-bottom-color:var(--gold);}
-  .field textarea{min-height:96px;}
+  .field textarea:focus,
+  .field select:focus{border-bottom-color:var(--gold);}
+  .field textarea{min-height:80px;}
+  .field select{
+    appearance:none;
+    -webkit-appearance:none;
+    cursor:pointer;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%23CBA052' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 4px center;
+    background-size:11px 7px;
+  }
+  .field select option{background:var(--panel);color:var(--ink);}
+  .field input[type="file"]{
+    font-size:13.5px;
+    padding:8px 0;
+    color:var(--ink-soft);
+  }
+  .field input[type="file"]::file-selector-button{
+    background:var(--gold);
+    color:var(--bg);
+    border:none;
+    border-radius:999px;
+    padding:8px 18px;
+    font-size:12.5px;
+    font-weight:500;
+    font-family:inherit;
+    margin-right:14px;
+    cursor:pointer;
+    transition:background .2s ease;
+  }
+  .field input[type="file"]::file-selector-button:hover{background:var(--gold-light);}
   .hp-field{position:absolute;left:-9999px;opacity:0;}
   .form-submit{
     display:inline-flex;
@@ -533,7 +701,8 @@
   .form-submit:disabled{opacity:0.6;cursor:not-allowed;}
   .form-status{
     margin-top:16px;
-    font-size:14px;
+    font-size:13.5px;
+    line-height:1.4;
   }
   .form-status.success{color:#7FBF8F;}
   .form-status.error{color:#D98C7C;}
@@ -561,24 +730,182 @@
       width:calc(100% - 40px);
       text-align:center;
     }
+    .nav-links a.dossier-link{
+      display:flex;
+      margin:8px 20px 0;
+      width:calc(100% - 40px);
+      justify-content:center;
+    }
     .nav-toggle{display:block;}
     header.hero{padding:64px 0 56px;}
     .hero-grid{grid-template-columns:1fr;gap:40px;}
     .hero-panel{max-width:340px;margin:0 auto;}
     .stat-row{grid-template-columns:repeat(2,1fr);gap:32px;}
-    section{padding:56px 0;scroll-margin-top:80px;}
+    section{padding:44px 0;scroll-margin-top:80px;}
     .role-item, .role-item.secondary{grid-template-columns:1fr;gap:8px;}
     .role-years{padding-top:0;}
     .ach-list{grid-template-columns:1fr;}
     .comp-grid{grid-template-columns:1fr;}
+    .inst-grid{grid-template-columns:1fr;}
     .edu-grid{grid-template-columns:1fr;gap:32px;}
-    .contact-grid{grid-template-columns:1fr;gap:40px;}
+    .forms-grid{grid-template-columns:1fr;gap:24px;}
+    .form-card{padding:24px;}
     .footer-bottom{flex-direction:column;align-items:flex-start;}
+    .footer-cta{flex-direction:column;align-items:flex-start;padding:24px;}
+    .footer-cta .btn{width:100%;text-align:center;}
   }
   @media (max-width:400px){
     .nav-mark{font-size:11px;}
     .brand{gap:8px;}
-    .brand-badge{width:32px;height:32px;font-size:13px;}
+    .brand-badge{width:32px;height:32px;}
+  }
+  /* ================================================================
+     PRINT / DOSSIER STYLESHEET
+     Triggered via window.print() from the "Dossier" nav link.
+     Reformats the dark, animated site into a clean, ink-friendly
+     document suitable for a Save-as-PDF executive dossier.
+     ================================================================ */
+  @media print{
+    @page{ margin:16mm 14mm; }
+
+    *{
+      animation:none !important;
+      transition:none !important;
+      box-shadow:none !important;
+      text-shadow:none !important;
+    }
+
+    body{
+      background:#FFFFFF !important;
+      color:#1A1A1A;
+      font-size:11.5pt;
+      line-height:1.45;
+    }
+
+    /* Force every scroll-reveal element visible regardless of JS state */
+    .fade{opacity:1 !important;transform:none !important;}
+
+    /* Hide everything not relevant to a printed dossier */
+    nav,
+    .hero-cta,
+    .hero-panel-caption,
+    #contact .section-head,
+    #contact .forms-grid,
+    .footer-cta,
+    .footer-motto,
+    .nav-toggle{
+      display:none !important;
+    }
+
+    a[href]::after{ content:""; }
+    a{ color:inherit; text-decoration:none; }
+
+    .wrap{ max-width:100%; padding:0; }
+
+    /* ---------- Hero ---------- */
+    header.hero{
+      padding:0 0 16pt;
+      border-bottom:1px solid #D9D9D9;
+      margin-bottom:16pt;
+    }
+    .hero-grid{
+      grid-template-columns:1fr auto;
+      gap:24pt;
+      align-items:start;
+    }
+    .eyebrow{ color:#8C7248; }
+    .eyebrow::before{ background:#8C7248; }
+    .hero h1{ color:#111; font-size:26pt; }
+    .hero h1 .surname{ color:#8C7248; }
+    .hero .role{ color:#444; }
+    .hero .tagline{ color:#333; max-width:100%; }
+    .hero-contact{ color:#333; margin-top:10pt; }
+    .hero-contact a{ color:#333; }
+    .stat-row{
+      margin-top:14pt;
+      gap:20pt;
+      border-top:1px solid #E2E2E2;
+      padding-top:10pt;
+    }
+    .stat .num{ color:#8C7248; font-size:15pt; }
+    .stat .label{ color:#555; }
+    .section-sub{ color:#333; }
+
+    .hero-panel{
+      max-width:150pt;
+      aspect-ratio:3/4;
+      border:1px solid #D9D9D9;
+      border-radius:4pt;
+    }
+    .hero-panel::after{ display:none; }
+    .hero-photo{ filter:none; }
+
+    /* ---------- Sections ---------- */
+    section, footer{
+      padding:14pt 0;
+      border-top:1px solid #E2E2E2;
+      scroll-margin-top:0;
+    }
+    section:first-of-type{ border-top:none; }
+    .section-head{ break-after:avoid-page; }
+    .section-num{ color:#8C7248; }
+    .section-num::before{ background:#8C7248; }
+    h2.section-title{ color:#111; font-size:16pt; }
+    #about p.lead{ color:#222; max-width:100%; }
+
+    /* ---------- Career ---------- */
+    .role-item{
+      border-top:1px solid #E2E2E2;
+      padding:10pt 0;
+      break-inside:avoid;
+    }
+    .role-item:first-of-type{ border-top:none; }
+    .role-years{ color:#8C7248; }
+    .role-title{ color:#111; font-size:13pt; }
+    .role-org{ color:#333; }
+    .role-tag{ color:#8C7248; }
+    .role-desc{ color:#333; }
+    .role-achievements{ color:#333; }
+    .role-achievements li::before{ color:#8C7248; }
+
+    /* ---------- Achievements ---------- */
+    .ach-item{
+      color:#222;
+      border-bottom:1px solid #E2E2E2;
+      break-inside:avoid;
+    }
+    .ach-item .mark{ color:#8C7248; }
+
+    /* ---------- Expertise ---------- */
+    .comp-item{ color:#333; border-bottom:1px solid #E2E2E2; }
+    .comp-item::before{ color:#8C7248; }
+    .inst-head{ break-after:avoid-page; }
+    .inst-grid{ break-inside:avoid-page; }
+    .inst-card{
+      background:#FAFAF8 !important;
+      border:1px solid #E2E2E2;
+      break-inside:avoid;
+    }
+    .inst-card h3{ color:#111; }
+    .inst-card h3 span{ color:#8C7248; }
+    .inst-card p{ color:#333; }
+    .inst-head .section-num{ color:#8C7248; }
+    .inst-head .section-num::before{ background:#8C7248; }
+
+    /* ---------- Education ---------- */
+    .edu-block h3{ color:#8C7248; }
+    .edu-block p{ color:#222; }
+    .edu-block .sub{ color:#555; }
+
+    /* ---------- Closing quote ---------- */
+    .quote{
+      color:#222;
+      border-left:2px solid #8C7248;
+    }
+
+    footer{ break-inside:avoid; }
+    .footer-bottom .contact-line{ color:#333; }
+    .footer-bottom .copyright{ color:#777; }
   }
 </style>
 </head>
@@ -587,13 +914,31 @@
 <nav>
   <div class="wrap">
     <div class="brand">
-      <div class="brand-badge">M</div>
+      <div class="brand-badge">
+        <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MMA monogram">
+          <circle cx="22" cy="22" r="20.5" fill="none" stroke="var(--gold-soft)" stroke-width="1"/>
+          <circle cx="22" cy="22" r="16.5" fill="none" stroke="var(--gold-soft)" stroke-width="0.5" opacity="0.55"/>
+          <text x="22" y="26.5" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="12" letter-spacing="1.4" fill="var(--gold)">MMA</text>
+        </svg>
+      </div>
       <span class="nav-mark">Majid Mohammad Aloraidi</span>
     </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">Profile</a></li>
       <li><a href="#experience">Career</a></li>
       <li><a href="#achievements">Achievements</a></li>
+      <li>
+        <a href="#" id="dossierBtn" class="dossier-link" title="Download Dossier (PDF)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 3h8l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round"/>
+            <path d="M14 3v4h4" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round"/>
+            <path d="M7.5 11h4.5M7.5 13.5h3" stroke="currentColor" stroke-width="0.9" stroke-linecap="round"/>
+            <circle cx="16.5" cy="17.3" r="4" fill="var(--bg)" stroke="var(--gold)" stroke-width="1"/>
+            <path d="M16.5 15.3l.6 1.22 1.35.2-.98.94.23 1.34-1.2-.63-1.2.63.23-1.34-.98-.94 1.35-.2.6-1.22Z" fill="var(--gold)"/>
+          </svg>
+          Dossier
+        </a>
+      </li>
       <li><a href="#contact" class="nav-cta">Get in touch →</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -639,10 +984,12 @@
     <div class="section-head">
       <div>
         <div class="section-num">01 · Profile</div>
-        <h2 class="section-title">A career built on discipline.</h2>
+        <h2 class="section-title">A Career Forged Through Discipline, Transformation, and Leadership</h2>
       </div>
     </div>
-    <p class="lead">A chief executive with more than three decades of domestic and international experience in operations, P&amp;L stewardship, and multichannel distribution. Distinguished by a proven ability to identify untapped markets and by high-level negotiations with the National Water Company (NWC) and the Saudi Water Authority (SWA), sustaining a consistent record of sales growth, operational excellence, and disciplined cost management.</p>
+    <p class="lead">A distinguished executive with more than three decades of domestic and international experience spanning operational leadership, P&amp;L stewardship, commercial strategy, and multichannel distribution. Renowned for translating complex business challenges into sustainable growth, operational resilience, and measurable value creation.</p>
+    <p class="lead">Demonstrates a proven capacity to identify and unlock latent market opportunities, architect strategic partnerships, and lead high-stakes commercial negotiations. Throughout his career, he has maintained a consistent record of accelerating revenue growth, strengthening operational performance, optimizing cost structures, and building commercially sustainable enterprises.</p>
+    <p class="lead">His leadership is distinguished by a combination of strategic foresight, commercial acumen, operational discipline, and executional rigor—enabling organizations to navigate complex markets while sustaining long-term performance and competitive advantage.</p>
   </div>
 </section>
 
@@ -659,12 +1006,15 @@
       <div class="role-years">2016 – Present</div>
       <div>
         <div class="role-title">General Manager</div>
-        <div class="role-org">SHA'S Co. Water Services Ltd. — Riyadh (Nestlé Subsidiary → Miahona)</div>
-        <p class="role-desc">Holds full P&amp;L and operational authority over Riyadh's water distribution enterprise.</p>
+        <div class="role-org">SHA'S Co. for Water Services Ltd. | Riyadh, Saudi Arabia</div>
+        <div class="role-tag">Water Production &amp; Distribution | Nestlé Subsidiary</div>
+        <p class="role-desc">Provide full P&amp;L, commercial, and operational leadership for a major water production and distribution business serving the Riyadh market. Accountable for end-to-end strategy and execution across production, distribution, fleet, supply chain, maintenance, customer service, and overall business performance.</p>
         <ul class="role-achievements">
-          <li>Exceeded annual sales targets</li>
-          <li>Reduced operating costs by 28% through strategic restructuring</li>
-          <li>Captured market share gains that enabled new joint ventures</li>
+          <li>Exceeded annual sales and operational targets, driving sustained improvement in business performance, profitability, and customer service excellence</li>
+          <li>Reduced operating costs through strategic restructuring, operational optimization, procurement excellence, and disciplined resource utilization</li>
+          <li>Elevated operational productivity and service reliability across water production, distribution networks, fleet operations, and critical supporting infrastructure</li>
+          <li>Expanded market presence and deepened strategic partnerships, unlocking new joint-venture opportunities and positioning the business for long-term sustainable growth</li>
+          <li>Led cross-functional teams and operational resources to deliver safe, reliable, and cost-effective water supply and distribution across Riyadh while embedding a culture of accountability, continuous improvement, and operational excellence</li>
         </ul>
       </div>
     </div>
@@ -672,36 +1022,32 @@
     <div class="role-item secondary">
       <div class="role-years">2014 – 2016</div>
       <div>
-        <div class="role-title">General Manager</div>
-        <div class="role-org">Hayat Water — GID Group, Riyadh</div>
-        <p class="role-desc">Tripled production capacity through the installation of a high-speed SIDEL line.</p>
+        <div class="role-title">Executive General Manager</div>
+        <div class="role-org">Hayat Factory for Fruit Drinks &amp; Bottled Water, Riyadh</div>
       </div>
     </div>
 
     <div class="role-item secondary">
       <div class="role-years">2000 – 2014</div>
       <div>
-        <div class="role-title">General Manager</div>
-        <div class="role-org">Najdiyah Marketing Co., Riyadh</div>
-        <p class="role-desc">Transformed a traditional dairy producer into a diversified food enterprise.</p>
+        <div class="role-title">Executive General Manager</div>
+        <div class="role-org">Najdiyah Food Company — Abnaee Investment Group, Riyadh</div>
       </div>
     </div>
 
     <div class="role-item secondary">
-      <div class="role-years">1998 – 2000</div>
+      <div class="role-years">1998 – 1999</div>
       <div>
-        <div class="role-title">General Manager</div>
+        <div class="role-title">General Manager, Sales &amp; Marketing</div>
         <div class="role-org">NADEC, Riyadh</div>
-        <p class="role-desc">Directed nationwide sales operations for the dairy division.</p>
       </div>
     </div>
 
     <div class="role-item secondary">
       <div class="role-years">1990 – 1998</div>
       <div>
-        <div class="role-title">Sales Manager → General Manager</div>
+        <div class="role-title">General Manager, Sales &amp; Marketing</div>
         <div class="role-org">Al Safi Danone, Riyadh</div>
-        <p class="role-desc">Directed manufacturing and marketing operations for a Danone joint venture.</p>
       </div>
     </div>
 
@@ -713,15 +1059,16 @@
     <div class="section-head">
       <div>
         <div class="section-num">03 · Achievements</div>
-        <h2 class="section-title">A record measured in enterprises built.</h2>
+        <h2 class="section-title">Selected Career Achievements</h2>
+        <p class="section-sub">A track record of building businesses, scaling operations, and delivering sustained commercial growth.</p>
       </div>
     </div>
     <div class="ach-list">
-      <div class="ach-item"><span class="mark">◆</span>Founded Tahaluf as SHA'S sister company, forging a strategic collaboration with NWC</div>
-      <div class="ach-item"><span class="mark">◆</span>Tripled production capacity at Hayat Water through a high-speed SIDEL line installation</div>
-      <div class="ach-item"><span class="mark">◆</span>Transformed Najdiyah from a traditional dairy producer into a diversified food enterprise</div>
-      <div class="ach-item"><span class="mark">◆</span>Consistently delivered annual sales beyond target at both Al Safi Danone and NADEC</div>
-      <div class="ach-item"><span class="mark">◆</span>Directed a nationwide distribution network across multiple regions</div>
+      <div class="ach-item"><span class="mark">◆</span>Founded Tahaluf as a sister company to SHA'S Co. for Water Services, establishing a strategic collaboration with NWC to support large-scale water distribution operations in Riyadh.</div>
+      <div class="ach-item"><span class="mark">◆</span>Tripled production capacity at Hayat Water through the successful implementation of a high-speed SIDEL production line, significantly expanding manufacturing capability and operational throughput.</div>
+      <div class="ach-item"><span class="mark">◆</span>Transformed Najdiyah from a traditional dairy producer into a more diversified food and beverage enterprise, broadening its product portfolio and strengthening its market position.</div>
+      <div class="ach-item"><span class="mark">◆</span>Consistently exceeded annual sales targets at both Al Safi Danone and NADEC, delivering sustained commercial performance through disciplined sales execution and market development.</div>
+      <div class="ach-item"><span class="mark">◆</span>Directed nationwide distribution operations across multiple regions, managing complex logistics, route-to-market activities, and customer service requirements to ensure reliable product availability and operational continuity.</div>
     </div>
   </div>
 </section>
@@ -745,7 +1092,20 @@
       <div class="comp-item">Budget / Sales Forecasting</div>
       <div class="comp-item">Corporate Governance</div>
       <div class="comp-item">Public &amp; Media Relations</div>
-      <div class="comp-item">Expert NWC &amp; SWA Relations</div>
+    </div>
+
+    <div class="inst-head">
+      <div class="section-num">Strategic Government Relations</div>
+    </div>
+    <div class="inst-grid">
+      <div class="inst-card">
+        <h3>National Water Company <span>(NWC)</span></h3>
+        <p>Serves as a trusted, senior-level counterpart in high-stakes contract negotiations, distribution standards, and long-term regulatory alignment with the Kingdom's principal water utility.</p>
+      </div>
+      <div class="inst-card">
+        <h3>Saudi Water Authority <span>(SWA)</span></h3>
+        <p>Maintains sustained engagement on licensing, compliance, and sector policy alignment, ensuring operations remain fully aligned with national water governance standards.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -767,9 +1127,8 @@
         <p class="sub">King Saud University, Riyadh</p>
       </div>
       <div class="edu-block">
-        <h3>Board &amp; Languages</h3>
+        <h3>Board</h3>
         <p>Board Member, Tahaluf Water Services Co.</p>
-        <p class="sub" style="margin-top:12px;">Arabic (Native) · English (Professional)</p>
       </div>
     </div>
   </div>
@@ -780,42 +1139,106 @@
     <div class="section-head">
       <div>
         <div class="section-num">06 · Contact</div>
-        <h2 class="section-title">Begin a conversation.</h2>
+        <h2 class="section-title">Two ways to connect.</h2>
+        <p class="section-sub">Whether you're applying for a role or reaching out for a meeting, partnership, or board inquiry — messages sent below are delivered directly by email.</p>
       </div>
     </div>
 
-    <div class="contact-grid">
-      <div class="contact-intro">
-        <p>For board appointments, partnerships, or professional inquiries — correspondence is welcomed from Riyadh and abroad. Messages sent below are delivered directly by email.</p>
+    <div class="forms-grid">
+      <div class="form-card">
+        <h3>Apply for a Position</h3>
+        <p class="form-card-sub">Submit your CV for consideration for current or future opportunities.</p>
+        <form id="cvForm" name="job-application" method="POST" data-netlify="true" netlify-honeypot="company" enctype="multipart/form-data">
+          <input type="hidden" name="form-name" value="job-application">
+          <div class="field hp-field">
+            <label for="cv-company">Company</label>
+            <input type="text" id="cv-company" name="company" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="cv-name">Full Name</label>
+            <input type="text" id="cv-name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="cv-email">Email</label>
+            <input type="email" id="cv-email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="cv-phone">Phone</label>
+            <input type="tel" id="cv-phone" name="phone">
+          </div>
+          <div class="field">
+            <label for="cv-position">Position of Interest</label>
+            <input type="text" id="cv-position" name="position" required>
+          </div>
+          <div class="field">
+            <label for="cv-file">Upload CV <span class="field-note">(PDF or Word, max 5MB)</span></label>
+            <input type="file" id="cv-file" name="cv" accept=".pdf,.doc,.docx" required>
+          </div>
+          <div class="field field-grow">
+            <label for="cv-message">Message <span class="field-note">(optional)</span></label>
+            <textarea id="cv-message" name="message"></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="cvSubmitBtn">Submit Application</button>
+          <div class="form-status" id="cvFormStatus" role="status" aria-live="polite"></div>
+        </form>
       </div>
 
-      <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="company">
-        <input type="hidden" name="form-name" value="contact">
-        <div class="field hp-field">
-          <label for="company">Company</label>
-          <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
-        </div>
-        <div class="field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
-        <button type="submit" class="form-submit" id="submitBtn">Send Message</button>
-        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-      </form>
+      <div class="form-card">
+        <h3>Schedule a Meeting</h3>
+        <p class="form-card-sub">For board appointments, partnerships, or any other professional inquiry.</p>
+        <form id="meetingForm" name="meeting-inquiry" method="POST" data-netlify="true" netlify-honeypot="company">
+          <input type="hidden" name="form-name" value="meeting-inquiry">
+          <div class="field hp-field">
+            <label for="mt-company">Company</label>
+            <input type="text" id="mt-company" name="company" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="mt-name">Full Name</label>
+            <input type="text" id="mt-name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="mt-email">Email</label>
+            <input type="email" id="mt-email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="mt-subject">Subject</label>
+            <select id="mt-subject" name="subject" required>
+              <option value="" disabled selected>Select a subject</option>
+              <option value="Meeting Request">Meeting Request</option>
+              <option value="Partnership">Partnership</option>
+              <option value="Board Appointment">Board Appointment</option>
+              <option value="Investment Opportunity">Investment Opportunity</option>
+              <option value="Consulting / Advisory">Consulting / Advisory</option>
+              <option value="Speaking Engagement">Speaking Engagement</option>
+              <option value="Government / Regulatory Matter">Government / Regulatory Matter</option>
+              <option value="Vendor / Supplier Inquiry">Vendor / Supplier Inquiry</option>
+              <option value="Media & Press">Media &amp; Press</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field field-grow">
+            <label for="mt-message">Message</label>
+            <textarea id="mt-message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="mtSubmitBtn">Send Message</button>
+          <div class="form-status" id="mtFormStatus" role="status" aria-live="polite"></div>
+        </form>
+      </div>
     </div>
 
     <p class="quote">"I build organizations that outperform their markets by transforming restructuring, strategic negotiations, and market expansion into sustainable, scalable growth."</p>
+
+    <div class="footer-cta">
+      <div>
+        <div class="footer-cta-label">Prefer email?</div>
+        <div class="footer-cta-text">Reach out directly and I'll respond personally.</div>
+      </div>
+      <a class="btn btn-primary" href="mailto:majid-aloraidi@outlook.sa">majid-aloraidi@outlook.sa →</a>
+    </div>
+
     <div class="footer-bottom">
       <div>
-        <div class="contact-line">Riyadh, Saudi Arabia · <a href="mailto:majid-aloraidi@outlook.sa">majid-aloraidi@outlook.sa</a></div>
+        <div class="contact-line">Riyadh, Saudi Arabia</div>
         <div class="copyright">© 2026 Majid Mohammad Aloraidi</div>
       </div>
       <div class="footer-motto">Vision <span>·</span> Discipline <span>·</span> Growth</div>
@@ -828,6 +1251,14 @@
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const dossierBtn = document.getElementById('dossierBtn');
+  if (dossierBtn) {
+    dossierBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.print();
+    });
+  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -849,60 +1280,102 @@
     CONTACT FORM SETUP
     -------------------
     Option A — Netlify hosting (recommended, zero signup):
-      The form already has data-netlify="true" and a hidden form-name field.
-      Netlify detects it at deploy time and emails submissions to the
-      address on your Netlify account. No further changes needed.
-      (Netlify Forms requires the classic, non-JS POST — this script
-      still submits via fetch to the same page, which Netlify also
-      supports as long as data-netlify="true" is present.)
+      Both forms already have data-netlify="true" and a hidden form-name
+      field with distinct names ("job-application" and "meeting-inquiry"),
+      so Netlify detects and emails each separately. No further changes
+      needed. The CV form also has enctype="multipart/form-data" so file
+      uploads pass through to Netlify Forms.
 
     Option B — any other static host (Vercel, GitHub Pages, etc.):
-      Sign up free at https://formspree.io, create a form, and replace
-      the FORMSPREE_ENDPOINT value below with your own endpoint
-      (looks like "https://formspree.io/f/xxxxabcd"). Then change the
-      form's method/target isn't needed — this script handles it.
+      Sign up free at https://formspree.io, create a form for each (or
+      one shared form), and paste your endpoint(s) below — each looks
+      like "https://formspree.io/f/xxxxabcd". Formspree accepts file
+      uploads on the CV form the same way.
   */
-  const FORMSPREE_ENDPOINT = ""; // e.g. "https://formspree.io/f/xxxxabcd"
+  const CV_FORMSPREE_ENDPOINT = "";      // e.g. "https://formspree.io/f/xxxxabcd"
+  const MEETING_FORMSPREE_ENDPOINT = ""; // e.g. "https://formspree.io/f/yyyyefgh"
 
-  const form = document.getElementById('contactForm');
-  const statusEl = document.getElementById('formStatus');
-  const submitBtn = document.getElementById('submitBtn');
+  function setupForm({ formId, statusId, btnId, endpoint, sendingText, idleText, maxFileSizeMB }) {
+    const form = document.getElementById(formId);
+    const statusEl = document.getElementById(statusId);
+    const submitBtn = document.getElementById(btnId);
+    if (!form) return;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    // Honeypot spam check
-    if (form.company.value) return;
+      // Honeypot spam check
+      if (form.company.value) return;
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
-    statusEl.textContent = '';
-    statusEl.className = 'form-status';
-
-    const data = new FormData(form);
-    const endpoint = FORMSPREE_ENDPOINT || window.location.pathname;
-
-    try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        statusEl.textContent = 'Thank you — your message has been sent.';
-        statusEl.classList.add('success');
-        form.reset();
-      } else {
-        throw new Error('Submission failed');
+      // Local file testing (double-clicking the HTML file) can never submit —
+      // browsers block this by design. Fail clearly instead of a confusing
+      // network/CORS error in the console.
+      if (window.location.protocol === 'file:') {
+        statusEl.textContent = 'This form only works once the site is uploaded to a live host — it can\'t submit from a local file. Please email majid-aloraidi@outlook.sa directly.';
+        statusEl.className = 'form-status error';
+        return;
       }
-    } catch (err) {
-      statusEl.textContent = 'Something went wrong. Please email majid-aloraidi@outlook.sa directly.';
-      statusEl.classList.add('error');
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
-    }
+
+      // Optional client-side file size check (CV form only)
+      const fileInput = form.querySelector('input[type="file"]');
+      if (fileInput && fileInput.files.length && maxFileSizeMB) {
+        const sizeMB = fileInput.files[0].size / (1024 * 1024);
+        if (sizeMB > maxFileSizeMB) {
+          statusEl.textContent = `That file is too large (max ${maxFileSizeMB}MB). Please attach a smaller file or email it directly to majid-aloraidi@outlook.sa.`;
+          statusEl.className = 'form-status error';
+          return;
+        }
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = sendingText;
+      statusEl.textContent = '';
+      statusEl.className = 'form-status';
+
+      const data = new FormData(form);
+      const target = endpoint || window.location.pathname;
+
+      try {
+        const response = await fetch(target, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          statusEl.textContent = 'Thank you — your message has been sent.';
+          statusEl.classList.add('success');
+          form.reset();
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        statusEl.textContent = 'Something went wrong. Please email majid-aloraidi@outlook.sa directly.';
+        statusEl.classList.add('error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = idleText;
+      }
+    });
+  }
+
+  setupForm({
+    formId: 'cvForm',
+    statusId: 'cvFormStatus',
+    btnId: 'cvSubmitBtn',
+    endpoint: CV_FORMSPREE_ENDPOINT,
+    sendingText: 'Submitting…',
+    idleText: 'Submit Application',
+    maxFileSizeMB: 5
+  });
+
+  setupForm({
+    formId: 'meetingForm',
+    statusId: 'mtFormStatus',
+    btnId: 'mtSubmitBtn',
+    endpoint: MEETING_FORMSPREE_ENDPOINT,
+    sendingText: 'Sending…',
+    idleText: 'Send Message'
   });
 </script>
 
