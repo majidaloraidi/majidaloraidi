@@ -1306,6 +1306,48 @@
   const CV_FORMSPREE_ENDPOINT = "";      // e.g. "https://formspree.io/f/xxxxabcd"
   const MEETING_FORMSPREE_ENDPOINT = ""; // e.g. "https://formspree.io/f/yyyyefgh"
 
+  function openMailtoFallback(formId, form) {
+    const email = 'majid-aloraidi@outlook.sa';
+    const val = (name) => {
+      const el = form.elements[name];
+      return el ? (el.value || '').trim() : '';
+    };
+    let subject, bodyLines;
+
+    if (formId === 'cvForm') {
+      const name = val('name');
+      const position = val('position');
+      const fileEl = form.elements['cv'];
+      const hasFile = fileEl && fileEl.files && fileEl.files.length > 0;
+      subject = `Job Application: ${position || 'Position'} — ${name}`;
+      bodyLines = [
+        `Name: ${name}`,
+        `Email: ${val('email')}`,
+        val('phone') ? `Phone: ${val('phone')}` : null,
+        `Position of Interest: ${position}`,
+        val('message') ? `Message: ${val('message')}` : null,
+        '',
+        hasFile
+          ? `IMPORTANT: Please attach your CV (${fileEl.files[0].name}) to this email before sending — email links can't carry file attachments automatically.`
+          : 'IMPORTANT: Please attach your CV to this email before sending.'
+      ].filter(Boolean);
+    } else {
+      const name = val('name');
+      const subj = val('subject');
+      subject = subj ? `${subj} — message from ${name}` : `Website inquiry from ${name}`;
+      bodyLines = [
+        `Name: ${name}`,
+        `Email: ${val('email')}`,
+        `Subject: ${subj}`,
+        '',
+        val('message')
+      ];
+    }
+
+    const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+    window.location.href = mailtoUrl;
+  }
+
   function setupForm({ formId, statusId, btnId, endpoint, sendingText, idleText, maxFileSizeMB }) {
     const form = document.getElementById(formId);
     const statusEl = document.getElementById(statusId);
@@ -1335,15 +1377,6 @@
         return;
       }
 
-      // Local file testing (double-clicking the HTML file) can never submit —
-      // browsers block this by design. Fail clearly instead of a confusing
-      // network/CORS error in the console.
-      if (window.location.protocol === 'file:') {
-        statusEl.textContent = 'This form only works once the site is uploaded to a live host — it can\'t submit from a local file. Please email majid-aloraidi@outlook.sa directly.';
-        statusEl.className = 'form-status error';
-        return;
-      }
-
       // Optional client-side file size check (CV form only)
       const fileInput = form.querySelector('input[type="file"]');
       if (fileInput && fileInput.files.length && maxFileSizeMB) {
@@ -1359,6 +1392,17 @@
       submitBtn.textContent = sendingText;
       statusEl.textContent = '';
       statusEl.className = 'form-status';
+
+      // Local file testing (double-clicking the HTML file) can never reach a
+      // network endpoint — skip straight to the guaranteed-working fallback.
+      if (window.location.protocol === 'file:') {
+        openMailtoFallback(formId, form);
+        statusEl.textContent = 'This preview can\'t submit directly — opening your email app instead so the message still reaches me.';
+        statusEl.classList.add('success');
+        submitBtn.disabled = false;
+        submitBtn.textContent = idleText;
+        return;
+      }
 
       const data = new FormData(form);
       const target = endpoint || window.location.pathname;
@@ -1378,8 +1422,12 @@
           throw new Error('Submission failed');
         }
       } catch (err) {
-        statusEl.textContent = 'Something went wrong. Please email majid-aloraidi@outlook.sa directly.';
-        statusEl.classList.add('error');
+        // No backend configured yet (or it's unreachable) — fall back to
+        // opening the visitor's email client with everything pre-filled,
+        // so the message reaches its destination regardless of hosting setup.
+        openMailtoFallback(formId, form);
+        statusEl.textContent = 'Opening your email app so this message reaches me directly.';
+        statusEl.classList.add('success');
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = idleText;
