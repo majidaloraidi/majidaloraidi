@@ -370,26 +370,34 @@
     letter-spacing:0.03em;
   }
   .role-desc{
-    margin-top:6px;
+    margin-top:10px;
     font-size:15px;
     color:var(--ink-soft);
-    max-width:600px;
-    line-height:1.5;
+    max-width:640px;
+    line-height:1.55;
+    text-align:justify;
+    text-justify:inter-word;
+    hyphens:auto;
   }
   .role-achievements{
-    margin-top:8px;
+    margin-top:10px;
     list-style:none;
     font-size:14.5px;
     color:var(--ink-soft);
+    max-width:640px;
   }
   .role-achievements li{
-    margin-bottom:6px;
+    margin-bottom:9px;
     padding-left:20px;
     position:relative;
+    line-height:1.55;
+    text-align:justify;
+    text-justify:inter-word;
+    hyphens:auto;
   }
   .role-achievements li::before{
     content:"◆";
-    position:absolute;left:0;top:1px;
+    position:absolute;left:0;top:2px;
     color:var(--gold);
     font-size:9px;
   }
@@ -651,6 +659,9 @@
   .field input:focus,
   .field textarea:focus,
   .field select:focus{border-bottom-color:var(--gold);}
+  .field-invalid{
+    border-bottom-color:#D98C7C !important;
+  }
   .field textarea{min-height:80px;}
   .field select{
     appearance:none;
@@ -1148,7 +1159,7 @@
       <div class="form-card">
         <h3>Apply for a Position</h3>
         <p class="form-card-sub">Submit your CV for consideration for current or future opportunities.</p>
-        <form id="cvForm" name="job-application" method="POST" data-netlify="true" netlify-honeypot="company" enctype="multipart/form-data">
+        <form id="cvForm" name="job-application" method="POST" data-netlify="true" netlify-honeypot="company" enctype="multipart/form-data" novalidate>
           <input type="hidden" name="form-name" value="job-application">
           <div class="field hp-field">
             <label for="cv-company">Company</label>
@@ -1186,7 +1197,7 @@
       <div class="form-card">
         <h3>Schedule a Meeting</h3>
         <p class="form-card-sub">For board appointments, partnerships, or any other professional inquiry.</p>
-        <form id="meetingForm" name="meeting-inquiry" method="POST" data-netlify="true" netlify-honeypot="company">
+        <form id="meetingForm" name="meeting-inquiry" method="POST" data-netlify="true" netlify-honeypot="company" novalidate>
           <input type="hidden" name="form-name" value="meeting-inquiry">
           <div class="field hp-field">
             <label for="mt-company">Company</label>
@@ -1306,6 +1317,23 @@
 
       // Honeypot spam check
       if (form.company.value) return;
+
+      // Manual validation (forms use novalidate so we control the feedback
+      // ourselves — native browser validation bubbles can fail to render
+      // inside embedded/sandboxed previews, making the form look broken
+      // when it's actually just waiting on a required field).
+      if (!form.checkValidity()) {
+        const invalidField = form.querySelector(':invalid');
+        statusEl.textContent = 'Please complete all required fields before sending — check the highlighted field.';
+        statusEl.className = 'form-status error';
+        if (invalidField) {
+          invalidField.classList.add('field-invalid');
+          invalidField.focus();
+          invalidField.addEventListener('input', () => invalidField.classList.remove('field-invalid'), { once: true });
+          invalidField.addEventListener('change', () => invalidField.classList.remove('field-invalid'), { once: true });
+        }
+        return;
+      }
 
       // Local file testing (double-clicking the HTML file) can never submit —
       // browsers block this by design. Fail clearly instead of a confusing
