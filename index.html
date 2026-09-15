@@ -42,6 +42,119 @@
   .serif{font-family:'Cormorant Garamond',serif;}
 
   /* ---------- Nav ---------- */
+  /* ---------- National Day banner ---------- */
+  .nd-banner{
+    background:
+      radial-gradient(ellipse 500px 200px at 20% 0%, rgba(203,160,82,0.10), transparent 60%),
+      radial-gradient(ellipse 500px 200px at 80% 100%, rgba(203,160,82,0.08), transparent 60%),
+      linear-gradient(135deg, #0A3520, #14432B 55%, #0A3520);
+    position:relative;
+    overflow:hidden;
+  }
+  .nd-edge{
+    height:3px;
+    background:linear-gradient(90deg, transparent, var(--gold-soft) 15%, var(--gold) 50%, var(--gold-soft) 85%, transparent);
+    opacity:0.8;
+  }
+  .nd-edge-top{box-shadow:0 1px 0 rgba(0,0,0,0.2);}
+  .nd-inner{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:22px;
+    flex-wrap:wrap;
+    padding:15px 44px;
+    position:relative;
+  }
+  .nd-emblem{
+    flex-shrink:0;
+    display:flex;
+    filter:drop-shadow(0 0 4px rgba(203,160,82,0.35));
+  }
+  .nd-message{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:3px;
+    text-align:center;
+  }
+  .nd-ar{
+    font-family:'Cormorant Garamond', serif;
+    font-size:19px;
+    font-weight:600;
+    color:#F7F4E9;
+    direction:rtl;
+    letter-spacing:0.01em;
+  }
+  .nd-ar-sub{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:14px;
+    color:var(--gold);
+    direction:rtl;
+  }
+  .nd-en{
+    font-size:10.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:#9FB89F;
+    margin-top:1px;
+  }
+  .nd-countdown{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-shrink:0;
+  }
+  .nd-unit{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    min-width:44px;
+    padding:6px 4px 7px;
+    border:1px solid rgba(203,160,82,0.4);
+    border-radius:7px;
+    background:rgba(0,0,0,0.18);
+  }
+  .nd-num{
+    font-family:'Cormorant Garamond', serif;
+    font-size:21px;
+    font-weight:600;
+    color:var(--gold);
+    font-variant-numeric:tabular-nums;
+    line-height:1;
+  }
+  .nd-label{
+    font-size:8.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:#8FA890;
+    margin-top:4px;
+  }
+  .nd-sep{
+    color:var(--gold-soft);
+    font-family:'Cormorant Garamond', serif;
+    font-size:18px;
+    opacity:0.7;
+    margin-top:-8px;
+  }
+  .nd-close{
+    position:absolute;
+    right:16px;
+    top:50%;
+    transform:translateY(-50%);
+    background:none;
+    border:none;
+    color:#8FA890;
+    font-size:20px;
+    line-height:1;
+    cursor:pointer;
+    padding:6px 10px;
+    transition:color .2s ease;
+  }
+  .nd-close:hover{color:#F7F4E9;}
+  .nd-banner.nd-hidden{display:none;}
+
   nav{
     position:sticky;top:0;z-index:50;
     background:rgba(13,12,10,0.85);
@@ -716,11 +829,29 @@
     line-height:1.4;
   }
   .form-status.success{color:#7FBF8F;}
+  .status-link{
+    color:var(--gold);
+    font-weight:600;
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+  .status-link:hover{color:var(--gold-light);}
   .form-status.error{color:#D98C7C;}
 
   /* ---------- Responsive ---------- */
   @media (max-width:760px){
     .wrap{padding:0 20px;}
+    .nd-inner{
+      padding:16px 40px 16px 16px;
+      gap:10px;
+      flex-direction:column;
+      text-align:center;
+    }
+    .nd-message{gap:2px;}
+    .nd-close{right:12px;}
+    .nd-unit{min-width:38px;padding:5px 3px 6px;}
+    .nd-num{font-size:18px;}
+    .nd-sep{margin-top:-6px;}
     .nav-mark{font-size:13px;}
     .nav-links{
       position:absolute;top:80px;left:0;right:0;
@@ -798,6 +929,7 @@
 
     /* Hide everything not relevant to a printed dossier */
     nav,
+    .nd-banner,
     .hero-cta,
     .hero-panel-caption,
     #contact .section-head,
@@ -922,6 +1054,34 @@
 </head>
 <body>
 
+<div id="ndBanner" class="nd-banner">
+  <div class="nd-edge nd-edge-top"></div>
+  <div class="wrap nd-inner">
+    <div class="nd-emblem">
+      <svg viewBox="0 0 32 32" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 2 L19 13 L30 16 L19 19 L16 30 L13 19 L2 16 L13 13 Z" fill="var(--gold)"/>
+        <circle cx="16" cy="16" r="3.2" fill="#0B3D24" stroke="var(--gold)" stroke-width="0.8"/>
+      </svg>
+    </div>
+    <div class="nd-message">
+      <span class="nd-ar">اليوم الوطني السعودي</span>
+      <span class="nd-ar-sub">دام عزك يا وطن</span>
+      <span class="nd-en">Saudi National Day — 23 September</span>
+    </div>
+    <div class="nd-countdown" id="ndCountdown" aria-live="polite">
+      <div class="nd-unit"><span class="nd-num" id="ndDays">00</span><span class="nd-label">Days</span></div>
+      <span class="nd-sep">:</span>
+      <div class="nd-unit"><span class="nd-num" id="ndHours">00</span><span class="nd-label">Hrs</span></div>
+      <span class="nd-sep">:</span>
+      <div class="nd-unit"><span class="nd-num" id="ndMins">00</span><span class="nd-label">Min</span></div>
+      <span class="nd-sep">:</span>
+      <div class="nd-unit"><span class="nd-num" id="ndSecs">00</span><span class="nd-label">Sec</span></div>
+    </div>
+    <button class="nd-close" id="ndClose" aria-label="Dismiss">&times;</button>
+  </div>
+  <div class="nd-edge nd-edge-bottom"></div>
+</div>
+
 <nav>
   <div class="wrap">
     <div class="brand">
@@ -1033,7 +1193,7 @@
     <div class="role-item secondary">
       <div class="role-years">2014 – 2016</div>
       <div>
-        <div class="role-title">Executive General Manager</div>
+        <div class="role-title">General Manager</div>
         <div class="role-org">Hayat Factory for Fruit Drinks &amp; Bottled Water, Riyadh</div>
       </div>
     </div>
@@ -1041,7 +1201,7 @@
     <div class="role-item secondary">
       <div class="role-years">2000 – 2014</div>
       <div>
-        <div class="role-title">Executive General Manager</div>
+        <div class="role-title">General Manager</div>
         <div class="role-org">Najdiyah Food Company — Abnaee Investment Group, Riyadh</div>
       </div>
     </div>
@@ -1049,7 +1209,7 @@
     <div class="role-item secondary">
       <div class="role-years">1998 – 1999</div>
       <div>
-        <div class="role-title">General Manager, Sales &amp; Marketing</div>
+        <div class="role-title">Manager, Sales &amp; Marketing</div>
         <div class="role-org">NADEC, Riyadh</div>
       </div>
     </div>
@@ -1057,7 +1217,7 @@
     <div class="role-item secondary">
       <div class="role-years">1990 – 1998</div>
       <div>
-        <div class="role-title">General Manager, Sales &amp; Marketing</div>
+        <div class="role-title">Manager, Sales &amp; Marketing</div>
         <div class="role-org">Al Safi Danone, Riyadh</div>
       </div>
     </div>
@@ -1258,6 +1418,58 @@
 </footer>
 
 <script>
+  // National Day countdown — targets September 23 (Saudi National Day),
+  // rolling to next year automatically once the date has passed.
+  (function initNationalDayCountdown() {
+    const banner = document.getElementById('ndBanner');
+    const closeBtn = document.getElementById('ndClose');
+    const elDays = document.getElementById('ndDays');
+    const elHours = document.getElementById('ndHours');
+    const elMins = document.getElementById('ndMins');
+    const elSecs = document.getElementById('ndSecs');
+    if (!banner || !elDays) return;
+
+    function getNextNationalDay() {
+      const now = new Date();
+      let target = new Date(now.getFullYear(), 8, 23, 0, 0, 0); // month 8 = September
+      if (target.getTime() <= now.getTime()) {
+        target = new Date(now.getFullYear() + 1, 8, 23, 0, 0, 0);
+      }
+      return target;
+    }
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      const now = new Date();
+      const target = getNextNationalDay();
+      const diff = target.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        elDays.textContent = '00'; elHours.textContent = '00';
+        elMins.textContent = '00'; elSecs.textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      elDays.textContent = pad(days);
+      elHours.textContent = pad(hours);
+      elMins.textContent = pad(mins);
+      elSecs.textContent = pad(secs);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => banner.classList.add('nd-hidden'));
+    }
+  })();
+
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
@@ -1306,7 +1518,7 @@
   const CV_FORMSPREE_ENDPOINT = "";      // e.g. "https://formspree.io/f/xxxxabcd"
   const MEETING_FORMSPREE_ENDPOINT = ""; // e.g. "https://formspree.io/f/yyyyefgh"
 
-  function openMailtoFallback(formId, form) {
+  function buildMailtoUrl(formId, form) {
     const email = 'majid-aloraidi@outlook.sa';
     const val = (name) => {
       const el = form.elements[name];
@@ -1344,8 +1556,7 @@
       ];
     }
 
-    const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-    window.location.href = mailtoUrl;
+    return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
   }
 
   function setupForm({ formId, statusId, btnId, endpoint, sendingText, idleText, maxFileSizeMB }) {
@@ -1396,9 +1607,9 @@
       // Local file testing (double-clicking the HTML file) can never reach a
       // network endpoint — skip straight to the guaranteed-working fallback.
       if (window.location.protocol === 'file:') {
-        openMailtoFallback(formId, form);
-        statusEl.textContent = 'This preview can\'t submit directly — opening your email app instead so the message still reaches me.';
-        statusEl.classList.add('success');
+        const mailtoUrl = buildMailtoUrl(formId, form);
+        statusEl.innerHTML = 'This preview can\'t submit directly. <a href="' + mailtoUrl + '" class="status-link">Click here to send this by email →</a>';
+        statusEl.className = 'form-status success';
         submitBtn.disabled = false;
         submitBtn.textContent = idleText;
         return;
@@ -1422,12 +1633,16 @@
           throw new Error('Submission failed');
         }
       } catch (err) {
-        // No backend configured yet (or it's unreachable) — fall back to
-        // opening the visitor's email client with everything pre-filled,
-        // so the message reaches its destination regardless of hosting setup.
-        openMailtoFallback(formId, form);
-        statusEl.textContent = 'Opening your email app so this message reaches me directly.';
-        statusEl.classList.add('success');
+        // No backend configured yet (or it's unreachable) — fall back to a
+        // pre-filled email. We try to open it automatically, but some
+        // embedded/sandboxed previews silently block programmatic
+        // navigation, so we always also show a real clickable link as the
+        // guaranteed path — never leave the visitor with only a claim that
+        // "something opened" when it may not have.
+        const mailtoUrl = buildMailtoUrl(formId, form);
+        try { window.location.href = mailtoUrl; } catch (navErr) { /* ignored — link below still works */ }
+        statusEl.innerHTML = 'Direct sending isn\'t connected yet. <a href="' + mailtoUrl + '" class="status-link">Click here to send this by email →</a>';
+        statusEl.className = 'form-status success';
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = idleText;
